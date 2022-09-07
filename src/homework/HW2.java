@@ -40,7 +40,7 @@ public class HW2 {
 //                + z
 //        );
         System.out.println(
-                (int)x+(int)x+(int)x
+                x + x + x
         );
 
         System.out.println(
