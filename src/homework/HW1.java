@@ -1,4 +1,4 @@
-package lessons;
+package homework;
 
 public class HW1 {
 
