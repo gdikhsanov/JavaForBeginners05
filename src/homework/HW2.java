@@ -28,8 +28,16 @@ public class HW2 {
                 + "subtask "
                 + ++sub1);
 
-//      System.out.printf("| x=%-5s | y=%-15s | z=%-25s | %n", x,y,z);
-        System.out.printf("%s %s %s %n", x , y , z);
+//        System.out.print(
+//                x
+//                +""
+//                + y
+//                +""
+//                + z
+//        );
+        System.out.println(
+                x + x + x
+        );
 
         System.out.println("------------------------ \n"
                         + "subtask "
@@ -144,7 +152,7 @@ public class HW2 {
                 + ++sub2);
 
         System.out.printf("Только одно из всех этих чисел кратно 7, т.к. остаток от деления на 7, который "
-                        + "должен быть равен 0, для \n%d, %d, %d, %d равен \n%d, %d, %d, %d, соответственно.",
+                        + "должен быть равен 0, для \n%d, %d, %d, %d равен \n%d, %d, %d, %d, соответственно.\n",
                         x1, y1, x2, y2, x1 % delitel, y1 % delitel, x2 % delitel, y2 % delitel);
 
         System.out.println("============================== \n"
@@ -155,14 +163,33 @@ public class HW2 {
         double l = 10;
         double m = 15;
         String line = "-------------------------------------------------------------------------------------"
-        + "---------------";
+        + "--";
 
         System.out.println(line);
-        System.out.printf("|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|\n",
-                "", "+10", "-5" , "*100" , "/2" , "%2" , "^2" , "++" , "--");
+        System.out.printf("|%5s%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|%-8.2s|\n",
+                "", "", "+10", "-5" , "*100" , "/2" , "%2" , "^2" , "++" , "--");
+        System.out.println(line);
+        System.out.printf("|%5s%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|\n",
+                "k=", k, k+10, k-5, k*100, k/2, k%2, Math.pow(k, 2), k+1, k-1);
+        System.out.println(line);
+        System.out.printf("|%5s%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|\n",
+                "l=", l, l+10, l-5, l*100, l/2, l%2, Math.pow(l, 2), l+1, l-1);
+        System.out.println(line);
+        System.out.printf("|%5s%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|\n",
+                "m=", m, m+10, m-5, m*100, m/2, m%2, Math.pow(m, 2), m+1, m-1);
         System.out.println(line);
 
-        //System.out.printf("|%-8.2f k = %f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|%-8.2f|", k, );
+
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
+        double x5 = 5;
+        double y5 = 18;
+        int n5 = 3;
+
+        System.out.println(Math.pow(x5, n5));
+        System.out.printf("%.50f", ((5*x5 + 7*y5) / (8*x5 + 10*y5)) / ((3*x5 - y5)/(x5 + y5)));
 
     }
 }
