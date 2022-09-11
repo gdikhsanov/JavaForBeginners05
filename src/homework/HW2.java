@@ -184,12 +184,86 @@ public class HW2 {
                 + "Task "
                 + ++number);
 
-        double x5 = 5;
+        double x5 = 7;
         double y5 = 18;
         int n5 = 3;
+        double result5 = Math.pow(x5, n5) * (((5*x5 + 7*y5) / (8*x5 + 10*y5)) / ((3*x5 - y5)/(x5 + y5)));
+        System.out.printf("If \n" +
+                "x = %.0f\n" +
+                "y = %.0f\n" +
+                "n = %d\n" +
+                "then\n" +
+                "xⁿ((5x + 7y) / (8x + 10y)) / ((3x - y)/(x + y)) = %f\n", x5, y5, n5, result5);
 
-        System.out.println(Math.pow(x5, n5));
-        System.out.printf("%.50f", ((5*x5 + 7*y5) / (8*x5 + 10*y5)) / ((3*x5 - y5)/(x5 + y5)));
+
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
+        int term = 5;
+        int amount = 15;
+        int targetAmount = 69;
+        int result6 = (targetAmount / (amount / term));
+
+        System.out.printf("В мастерской за %d дней сшили %d костюмов, поровну за каждый день. " +
+                "%d костюмов сошьют за %dд.\n", term, amount, targetAmount, result6);
+
+        int a7 = 5;
+        int b7 = 10;
+        int c7 = 15;
+
+
+        System.out.printf("Если \n a = %d\n b = %d\n с = %d\n то:\n", a7, b7, c7);
+        System.out.printf("Сумма чисел a, b, c++ и sumABC-- = %d, a разность b++ и sumCBA = %d\n",
+                (a7 + b7 + c7 + 1 + a7 + b7 + c7 - 1),
+                (b7 +1) - (a7 + b7 + c7));
+        System.out.printf("Сумма чисел %d, %d, %d и %d = %d, a разность %d и %d = %d\n",
+                a7, b7, (c7 + 1), (a7 + b7 + c7 - 1), (a7 + b7 + c7 + 1 + a7 + b7 + c7 - 1),
+                (b7 +1), (a7 + b7 + c7), (b7 +1) - (a7 + b7 + c7));
+
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
+        int x7 = 5;
+
+        System.out.println("(x + 3)² = " + (int)Math.pow(x7+3, 2));
+
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
+        double x8 = 5;
+        double y8 = 6;
+        double a8 = 7;
+        double b8 = 8;
+        double c8 = 9;
+
+        System.out.println("Результат = " + (((3 + 4 * x8) / 5) - ((10 * (y8 - 5) * (a8 + b8 + c8)) / x8) +
+                (9 * (4 / x8 + ((9 + x8) / y8)))));
+
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
+        double x9 = 5;
+        double y9 = 6;
+        double a9 = 7;
+        double b9 = 8;
+        double c9 = 9;
+        double d9 = 10;
+
+        System.out.println((((5 * x9 + 7 * y9)/(8 * x9 + 10 * y9)) / ((3 * x9 - y9)/(x9 + y9))) /
+                (a9 + b9 + c9 / d9 + ((a9 + b9)/(c9 + d9)) + a9 * b9));
+
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
+        double c = 17;
+        double k2 = 273.15;
+
+        System.out.printf( "%.0f°C = %d°F и = %.0f°K \n", c, Math.round((c * 9 / 5) + 32), (c + k2));
 
     }
 }
