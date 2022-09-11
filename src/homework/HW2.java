@@ -208,6 +208,10 @@ public class HW2 {
         System.out.printf("В мастерской за %d дней сшили %d костюмов, поровну за каждый день. " +
                 "%d костюмов сошьют за %dд.\n", term, amount, targetAmount, result6);
 
+        System.out.println("============================== \n"
+                + "Task "
+                + ++number);
+
         int a7 = 5;
         int b7 = 10;
         int c7 = 15;
