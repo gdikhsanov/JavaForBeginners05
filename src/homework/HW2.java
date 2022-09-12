@@ -212,18 +212,18 @@ public class HW2 {
                 + "Task "
                 + ++number);
 
-        int a7 = 5;
-        int b7 = 10;
-        int c7 = 15;
+        int a = 5;
+        int b = 10;
+        int c = 15;
 
 
-        System.out.printf("Если \n a = %d\n b = %d\n с = %d\n то:\n", a7, b7, c7);
+        System.out.printf("Если \n a = %d\n b = %d\n с = %d\n то:\n", a, b, c);
         System.out.printf("Сумма чисел a, b, c++ и sumABC-- = %d, a разность b++ и sumCBA = %d\n",
-                (a7 + b7 + c7 + 1 + a7 + b7 + c7 - 1),
-                (b7 +1) - (a7 + b7 + c7));
+                (a + b + c + 1 + a + b + c - 1),
+                (b +1) - (a + b + c));
         System.out.printf("Сумма чисел %d, %d, %d и %d = %d, a разность %d и %d = %d\n",
-                a7, b7, (c7 + 1), (a7 + b7 + c7 - 1), (a7 + b7 + c7 + 1 + a7 + b7 + c7 - 1),
-                (b7 +1), (a7 + b7 + c7), (b7 +1) - (a7 + b7 + c7));
+                a, b, (c + 1), (a + b + c - 1), (a + b + c + 1 + a + b + c - 1),
+                (b +1), (a + b + c), (b +1) - (a + b + c));
 
         System.out.println("============================== \n"
                 + "Task "
@@ -237,14 +237,21 @@ public class HW2 {
                 + "Task "
                 + ++number);
 
-        double x8 = 5;
-        double y8 = 6;
-        double a8 = 7;
-        double b8 = 8;
-        double c8 = 9;
+        x = 5;
+        y = 6;
+        a = 3;
+        b = 4;
+        c = 5;
 
-        System.out.println("Результат = " + (((3 + 4 * x8) / 5) - ((10 * (y8 - 5) * (a8 + b8 + c8)) / x8) +
-                (9 * (4 / x8 + ((9 + x8) / y8)))));
+               System.out.println(
+                       "При ранее определенных "
+                       + "\nx = " + x
+                       + "\ny = " + y
+                       + "\na = " + a
+                       + "\nb = " + b
+                       + "\nc = " + c
+                       + "\nРезультат = "
+                       + (((3 + 4 * x) / 5) - ((10 * (y - 5) * (a + b + c)) / x) + (9 * (4 / x + ((9 + x) / y)))));
 
         System.out.println("============================== \n"
                 + "Task "
@@ -264,10 +271,10 @@ public class HW2 {
                 + "Task "
                 + ++number);
 
-        double c = 17;
+        double c1 = 17;
         double k2 = 273.15;
 
-        System.out.printf( "%.0f°C = %d°F и = %.0f°K \n", c, Math.round((c * 9 / 5) + 32), (c + k2));
+        System.out.printf( "%.0f°C = %d°F и = %.0f°K \n", c1, Math.round((c1 * 9 / 5) + 32), (c1 + k2));
 
     }
 }
