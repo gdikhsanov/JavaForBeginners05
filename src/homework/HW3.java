@@ -367,7 +367,7 @@ public class HW3 {
 
         System.out.println(res1.equals(res2));
 
-        //      #21
+        //      #22
 
         System.out.println("\n############################## \n"
                 + "Task "
@@ -377,10 +377,29 @@ public class HW3 {
 
         float cat = Float.MAX_VALUE;
         cat = Float.MIN_VALUE;
-        System.out.println((Float.MAX_VALUE - cat)/2);
+        System.out.println((Float.MAX_VALUE + cat)/2);
 
-        System.out.println("****************************** \ncrazy option");
+        System.out.println("****************************** \nlogic option");
 
+        float catMin = 37.5F;
+        float catMax = 39.1F;
 
+        System.out.println("Средняя температура кота = " + ((catMax + catMin) / 2) + "\u00B0C");
+
+        //      #23
+
+        System.out.println("\n############################## \n"
+                + "Task "
+                + ++number);
+
+        Number n = Long.MAX_VALUE;
+        n = 10;
+        n = 10.999999999;
+
+        //        System.out.println(n.getClass());
+        System.out.println("Переменная n может принимать значения:\n"
+                + "n = " + Long.MAX_VALUE
+                + "\nn = 10"
+                + "\nn = " + n);
     }
 }
