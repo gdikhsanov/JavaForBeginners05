@@ -233,9 +233,9 @@ public class HW3 {
         System.out.println(line14);
         System.out.printf("|%-25s|%-25s|%-25s|%-25s|\n", "long", Long.SIZE, Long.MIN_VALUE, Long.MAX_VALUE);
         System.out.println(line14);
-        System.out.printf("|%-25s|%-25s|%-25e|%-25f|\n", "float", Float.SIZE, Float.MIN_VALUE, Float.MAX_VALUE);
+        System.out.printf("|%-25s|%-25s|%-25e|%-25e|\n", "float", Float.SIZE, -Float.MAX_VALUE, Float.MAX_VALUE);
         System.out.println(line14);
-        System.out.printf("|%-25s|%-25s|%-25e|%-25e|\n", "double", Double.SIZE, Double.MIN_VALUE, Double.MAX_VALUE);
+        System.out.printf("|%-25s|%-25s|%-25e|%-25e|\n", "double", Double.SIZE, -Double.MAX_VALUE, Double.MAX_VALUE);
         System.out.println(line14);
 
         //      #15
@@ -376,7 +376,7 @@ public class HW3 {
         System.out.println("****************************** \ncrazy option");
 
         float cat = Float.MAX_VALUE;
-        cat = Float.MIN_VALUE;
+        cat = -Float.MAX_VALUE;
         System.out.println((Float.MAX_VALUE + cat)/2);
 
         System.out.println("****************************** \nlogic option");
@@ -392,14 +392,57 @@ public class HW3 {
                 + "Task "
                 + ++number);
 
-        Number n = Long.MAX_VALUE;
+        Number n = Double.MAX_VALUE;
         n = 10;
         n = 10.999999999;
 
         //        System.out.println(n.getClass());
+
         System.out.println("Переменная n может принимать значения:\n"
-                + "n = " + Long.MAX_VALUE
+                + "n = " + Double.MAX_VALUE
                 + "\nn = 10"
-                + "\nn = " + n);
+                + "\nn = "
+                + n
+                + "\nЭто возможно потому, что класс Number включает все цифровые классы");
+
+        //      #24
+
+        System.out.println("\n############################## \n"
+                + "Task "
+                + ++number);
+
+        //1 kg = 2.20462262185 lb
+        //m(lb) = m(kg) / 0.45359237
+
+        int quant25_1 = 50;
+        String kilo = " kilogram ";
+        String kg = " kg ";
+        String lb = " lb ";
+        String lbs = " lbs ";
+        String comma = ", ";
+        String eq = " = ";
+        float res25lbs = quant25_1 * 2.20462262185f;
+        float res25kg = quant25_1 * (1 / 2.20462262185f);
+        System.out.println(quant25_1 + kilo + eq + res25lbs + lbs + comma + quant25_1 + lb + eq + res25kg + kg);
+
+        //d(mi) = d(m) / 1609.344
+
+        int quant25_2 = 100;
+        String meters = " meters ";
+        String miles = " miles";
+        float res25mi = quant25_2 / 1609.344f;
+        float res25m = quant25_2 *  1609.344f;
+        System.out.println(quant25_2 + meters + eq + res25mi + miles + comma + quant25_2 + miles + eq + res25m + meters);
+
+        //      #26
+
+        System.out.println("\n############################## \n"
+                + "Task "
+                + ++number);
+
+        System.out.println("202 - thunderstorm with heavy rain\n"
+                        + "804 - overcast clouds: 85-100%\n"
+                        + "613 - Shower sleet");
+
     }
 }
