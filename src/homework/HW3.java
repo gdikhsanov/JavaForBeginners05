@@ -356,6 +356,8 @@ public class HW3 {
 
         System.out.println(doub1-doub2);
         System.out.println(Double.sum(Double.parseDouble(str1), -Double.parseDouble(str2))); // sum double
+        // вариант 2 использовать Double.valueOf(str1)
+        // вариант 3 = new Double(String value) через конструктор объявлять стрингом
         //System.out.println(Double.compare(Double.parseDouble(str1), Double.parseDouble(str2))); // compare int -1,0,1
 
         System.out.println("****************************** \noption 1");
@@ -372,14 +374,6 @@ public class HW3 {
         System.out.println("\n############################## \n"
                 + "Task "
                 + ++number);
-
-        System.out.println("****************************** \ncrazy option");
-
-        float cat = Float.MAX_VALUE;
-        cat = -Float.MAX_VALUE;
-        System.out.println((Float.MAX_VALUE + cat)/2);
-
-        System.out.println("****************************** \nlogic option");
 
         float catMin = 37.5F;
         float catMax = 39.1F;
@@ -406,6 +400,17 @@ public class HW3 {
                 + "\nЭто возможно потому, что класс Number включает все цифровые классы");
 
         //      #24
+
+        System.out.println("\n############################## \n"
+                + "Task "
+                + ++number);
+
+        Integer numberInteger = 100;
+
+        System.out.println(numberInteger.getClass());
+        System.out.println(numberInteger.toString().getClass());
+
+        //      #25
 
         System.out.println("\n############################## \n"
                 + "Task "
