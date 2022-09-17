@@ -97,8 +97,8 @@ public class HW3 {
                 + "Task "
                 + ++number);
 
-        float ff = 1F / 3;
-        double dd = 1.0 / (double) 3;
+        float ff = 10F / 3;
+        double dd = 10.0 / (double) 3;
 
         System.out.println("Division result in float = " + ff);
         System.out.println("Division result in double = " + dd);
