@@ -57,6 +57,8 @@ public class HW2 {
                 + "y * z = %d%n"
                 + "Разность переменных y и z = %s%n", (x + y) , y * z , y - z);
 
+        //7
+
         System.out.println("============================== \n"
                         + "Task "
                         + ++number);
@@ -67,6 +69,8 @@ public class HW2 {
         System.out.printf("Если %d яблок поделить на %d учеников, то каждый ученик %n" +
                         "получит по %d яблок(a), и %d яблок(а) останется учителю.%n",
                         apple, student, apple / student, apple % student);
+
+        //8
 
         System.out.println("============================== \n"
                         + "Task "
