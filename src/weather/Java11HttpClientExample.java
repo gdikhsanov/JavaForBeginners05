@@ -22,7 +22,7 @@ import org.json.*;//НАДО ОБЯЗАТЕЛЬНО ДОБАВИТЬ json-202203
         }
        //-----------------отправка первого запроса-------------------------------------------------
         private void sendGet() throws Exception {
-            String city = "Sochi";//Задаём город
+            String city = "London";//Задаём город
             HttpRequest request = HttpRequest.newBuilder()
                     .GET()
                     .uri(URI.create("https://api.openweathermap.org/data/2.5/" +//get запрос прогноза на сегодня
@@ -38,12 +38,14 @@ import org.json.*;//НАДО ОБЯЗАТЕЛЬНО ДОБАВИТЬ json-202203
             // ИЗ-ЗА ДВОЙНЫХ КАВЫЧЕК
 
             // print response body
-            //System.out.println(response.body());
+            // System.out.println(response.body());
 
         //----------------------------разбор первого ответа-----------------------------------------------------
 
             JSONObject obj = new JSONObject(response.body());//создаём json объект из body ответа  response.body()
             int temp = obj.getJSONObject("main").getInt("temp");//из объекта main берём значение ключа temp
+            Double lon = obj.getJSONObject("coord").getDouble("lon");//lon
+            Double lat = obj.getJSONObject("coord").getDouble("lat");//lat
             Double wind = obj.getJSONObject("wind").getDouble("speed");//из объекта wind берём значение ключа speed
             JSONArray arr = obj.getJSONArray("weather");//из массива weather берем значение ключа description
                         for (int i = 0; i < arr.length(); i++) {
@@ -51,12 +53,16 @@ import org.json.*;//НАДО ОБЯЗАТЕЛЬНО ДОБАВИТЬ json-202203
 
             System.out.println("Погода в городе "
                     + obj.getString("name") // берём просто значение ключа name из корня json
-                    +" сегодня: " + temp + (char)186 + "С, "
+                    + " (lat: "
+                    + lat
+                    + ", lon: "
+                    + lon
+                    +") сегодня: " + temp + (char)186 + "С, "
                     + description + ", скорость ветра " + wind + " м/с");
             }
             //-----------------отправка второго запроса-------------------------------------------------
 
-            city = "Moscow";
+            city = "Paris";
             request = HttpRequest.newBuilder()
                     .GET()
                     .uri(URI.create("https://api.openweathermap.org/data/2.5/" +
@@ -67,18 +73,29 @@ import org.json.*;//НАДО ОБЯЗАТЕЛЬНО ДОБАВИТЬ json-202203
                     .build();
 
             response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
             //----------------------------разбор второго ответа-----------------------------------------------------
             // всё аналогично, но уже не объявляем, объявленные ранее переменные(obj, temp, wind, arr)
+
             obj = new JSONObject(
                     response.body());
             temp = obj.getJSONObject("main").getInt("temp");
+            lon = obj.getJSONObject("coord").getDouble("lon");//lon
+            lat = obj.getJSONObject("coord").getDouble("lat");//lat
             wind = obj.getJSONObject("wind").getDouble("speed");
             arr = obj.getJSONArray("weather");
             for (int i = 0; i < arr.length(); i++) {
                 String description = arr.getJSONObject(i).getString("description");
 
-                System.out.println("Погода в городе " + obj.getString("name") +" сегодня: " + temp + (char)186 + "С, "
+                System.out.println("Погода в городе "
+                        + obj.getString("name") // берём просто значение ключа name из корня json
+                        + " (lat: "
+                        + lat
+                        + ", lon: "
+                        + lon
+                        +") сегодня: " + temp + (char)186 + "С, "
                         + description + ", скорость ветра " + wind + " м/с");
+
             }
 
 
@@ -103,3 +120,4 @@ import org.json.*;//НАДО ОБЯЗАТЕЛЬНО ДОБАВИТЬ json-202203
 
     }
 
+//https://api.openweathermap.org/data/2.5/weather?q=Sochi&appid=2dbf2486d29bc3da1362709849e305e5&units=metric&lang=ru

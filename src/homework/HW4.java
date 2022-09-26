@@ -1,18 +1,20 @@
 package homework;
 
+import java.io.PrintStream;
+
 public class HW4 {
 
     //2
     public static void taskNumbers(int number) {
         System.out.println("Task # "
                 + number
-                + "\n================================================\n" );
+                + "\n================================================\n");
     }
 
     //12
-    public static void tempF(int tempC){
+    public static void tempF(int tempC) {
 
-        System.out.printf( "%d°C = %d°F \n", tempC, Math.round((tempC * 9 / 5) + 32));
+        System.out.printf("%d°C = %d°F \n", tempC, Math.round((tempC * 9 / 5) + 32));
 
     }
 
@@ -23,22 +25,19 @@ public class HW4 {
 
             System.out.println(
                     "a + b = "
-                    + (first + second)
-                    + "\n"
-                    + "a - b = "
-                    + (first - second));
-        }
-        else if ((first % 3 == 0) && (second % 3 == 0)){
+                            + (first + second)
+                            + "\n"
+                            + "a - b = "
+                            + (first - second));
+        } else if ((first % 3 == 0) && (second % 3 == 0)) {
 
             System.out.println("a + b = "
                     + (first + second));
-        }
-        else if ((first % 5 == 0) && (second % 5 == 0)) {
+        } else if ((first % 5 == 0) && (second % 5 == 0)) {
 
             System.out.println("a + b = "
                     + (first - second));
-        }
-        else
+        } else
             System.out.println("Невозможно произвести действия");
     }
 
@@ -46,36 +45,109 @@ public class HW4 {
 
     public static void mathKLM(int k, int l, int m) {
 
-        if (k!= 0 && l!= 0 && m!= 0) { // переделать на ноль для только в знаменателе!!!
+        if (k != 0 && l != 0 && m != 0) { // переделать на ноль для только в знаменателе!!!
 
             System.out.printf(//"%d %d %d ", k, l, m%k);
-            "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n"
-                    + "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n"
-                    + "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n"
-                    + "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n",
-            +k, l, ((double) k / (double) l), (k % l),
-            +k, m, ((double) k / (double) m), (k % m),
-            +l, m, ((double) l / (double) m), (l % m),
-            +m, k, ((double) m / (double) k), (m % k));
+                    "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n"
+                            + "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n"
+                            + "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n"
+                            + "Результат деления %d на %d = %.2f, а остаток от деления  = %d\n",
+                    +k, l, ((double) k / (double) l), (k % l),
+                    +k, m, ((double) k / (double) m), (k % m),
+                    +l, m, ((double) l / (double) m), (l % m),
+                    +m, k, ((double) m / (double) k), (m % k));
         }
     }
 
     //16
 
     static double speed;
+
     public static void speedAverage(int distance, int timeMinuts) {
 
-        speed = (((double)distance / (double)timeMinuts) * 60);
+        speed = (((double) distance / (double) timeMinuts) * 60);
 
         System.out.printf("Если тело преодолело %d км. за %d мин., то его средняя скорость была равна %.2f км/ч.\n",
                 distance, timeMinuts, speed);
 
     }
 
+    //17-1
+    //1 ко, 5-20 к, /2-4 ка, /5-9 к, 0 k
+    public static String endApple(int appleQuantity) {
 
+        String a = new String();
 
-    public static void animals(int q) {
+        if ((appleQuantity % 10) == 1) {
 
+            a = "ко";
+        } else if ((5 <= appleQuantity) && (appleQuantity <= 20) ||
+                ((5 <= (appleQuantity % 10)) && ((appleQuantity % 10) <= 9)) || ((appleQuantity % 10) == 0)) {
+
+            a = "к";
+        } else if ((2 <= (appleQuantity % 10)) && ((appleQuantity % 10)) <= 4) {
+
+            a = "ка";
+        } else {
+
+            a = "CHECK!!!";
+        }
+        return a;
+    }
+
+    //17-2
+    //1 а 2-20 ов 21-24 а 25-30 ов
+
+    public static String endStudent(int studentQuantity) {
+
+        String a = new String();
+
+        if ((2 <= studentQuantity) && (studentQuantity <= 20) ||
+                ((5 <= (studentQuantity % 10)) && ((studentQuantity % 10) <= 9)) || ((studentQuantity % 10) == 0)) {
+
+            a = "ов";
+        } else if ((1 <= (studentQuantity % 10)) && ((studentQuantity % 10)) <= 4) {
+
+            a = "а";
+        } else {
+
+            a = "CHECK!!!";
+        }
+        return a;
+    }
+
+    //18
+    public static void tableFloatDouble(float f, float ff, double d, double dd) {
+
+        Float floatSum = f + ff;
+        Float floatSub = f - ff;
+        Float floatProduct = f * ff;
+        Float floatQuotient = f / ff;
+        Float floatRemainder = f % ff;
+
+        double doubleSum = d + dd;
+        double doubleSub = d - dd;
+        double doubleProduct = d * dd;
+        double doubleQuotient = d / dd;
+        double doubleRemainder = d % dd;
+
+        String line126 = "---------------------------------------------------------------------------------------" +
+                "------------------";
+
+        System.out.println(line126);
+        System.out.printf("|%5s%-20f|%5s%-20f|%5s%-20f|%5s%-20f|\n", "f=", f, "ff=", ff, "d=", d, "dd=", dd);
+        System.out.println(line126);
+        System.out.printf("%-18s%-15.2f%20s%-18s %-15.2f%19s",
+                "|floatSum =", floatSum, "|", "doubleSum = ", doubleSum, "|\n");
+        System.out.printf("%-18s%-15.2f%20s%-18s %-15.2f%19s",
+                "|floatSub =", floatSub, "|", "doubleSub = ", doubleSub, "|\n");
+        System.out.printf("%-18s%-15.2f%20s%-18s %-15.2f%19s",
+                "|floatProduct =", floatProduct, "|", "floatProduct = ", doubleProduct, "|\n");
+        System.out.printf("%-18s%-15.2f%20s%-18s %-15.2f%19s",
+                "|floatQuotient =", floatQuotient, "|", "floatQuotient = ", doubleQuotient, "|\n");
+        System.out.printf("%-18s%-15.2f%20s%-18s %-15.2f%19s",
+                "|floatRemainder =", floatRemainder, "|", "floatRemainder = ", doubleRemainder, "|\n");
+        System.out.println(line126);
     }
 
     public static void main(String[] args) {
@@ -103,7 +175,7 @@ public class HW4 {
         System.out.println(!(pine.equals(oak)));
         System.out.println((!(15 < 3)) && (10 > 20));
         System.out.println("(\"Глаза даны, чтобы видеть\") && (\"Под третьим этажом находится второй этаж\")");
-        System.out.println((6/2 == 3) || (7*5 == 20));
+        System.out.println((6 / 2 == 3) || (7 * 5 == 20));
 
 
         taskNumbers(4);
@@ -123,12 +195,12 @@ public class HW4 {
         taskNumbers(7);
 
         System.out.println(
-        "if ((с другом) == true){\n"
-            + "\t\tХорошо\n"
-        + "\t}\n"
-            + "\telse{\n"
-                + "\t\tПлохо\n"
-            + "\t}\n");
+                "if ((с другом) == true){\n"
+                        + "\t\tХорошо\n"
+                        + "\t}\n"
+                        + "\telse{\n"
+                        + "\t\tПлохо\n"
+                        + "\t}\n");
 
         taskNumbers(8);
 
@@ -136,16 +208,13 @@ public class HW4 {
 
         int x = 10;
 
-        if (x > 10){
+        if (x > 10) {
             System.out.println("х больше 10");
-        }
-        else if (x < 0){
+        } else if (x < 0) {
             System.out.println("х - отрицательное число");
-        }
-        else if (x == 5){
+        } else if (x == 5) {
             System.out.println("Разность x и 5 равна 0");
-        }
-        else{
+        } else {
             System.out.println("Число x меньше 11, больше или равно 0, но не равно 5");
         }
 
@@ -155,10 +224,9 @@ public class HW4 {
 
         int y = 11;
 
-        if (y % 2 == 0){
-            System.out.println( y * 2);
-        }
-        else {
+        if (y % 2 == 0) {
+            System.out.println(y * 2);
+        } else {
             System.out.println(y * y);
         }
 
@@ -178,8 +246,7 @@ public class HW4 {
         if (age >= 18) {
             System.out.println(vote
                     + yes);
-        }
-        else {
+        } else {
             System.out.println(vote
                     + no);
         }
@@ -187,8 +254,7 @@ public class HW4 {
         if (age >= 16) {
             System.out.println(drive
                     + yes);
-        }
-        else {
+        } else {
             System.out.println(drive
                     + no);
         }
@@ -196,8 +262,7 @@ public class HW4 {
         if (age >= 5) {
             System.out.println(goToSchool
                     + yes);
-        }
-        else {
+        } else {
             System.out.println(goToSchool
                     + no);
         }
@@ -208,15 +273,12 @@ public class HW4 {
 
         if (score == 5) {
             System.out.println("выдать похвальную грамоту и перевести в следующий класс\n");
-        }
-        else if (score == 4) {
+        } else if (score == 4) {
             System.out.println("перевести в следующий класс\n");
-        }
-        else if (score == 3) {
+        } else if (score == 3) {
             System.out.println("дать задание на лето и перевести в следующий класс\n");
-        }
-        else if (score == 2) {
-                    System.out.println("вызвать родителей и оставить в текущем классе на второй год\n");
+        } else if (score == 2) {
+            System.out.println("вызвать родителей и оставить в текущем классе на второй год\n");
         }
 
         taskNumbers(12); // Math.round((c1 * 9 / 5) + 32)
@@ -229,33 +291,32 @@ public class HW4 {
 
         taskNumbers(14); // добавил проверку на ноль. Надо переделать на проверку на ноль только в знаменателе.
 
-        mathKLM(10, 12,20);
+        mathKLM(10, 12, 20);
 
         taskNumbers(15);
 
         int r;
-        int f;
+        int ph;
         int heads = 35;
         int legs = 94;
 
 
-        f = 2 * heads - legs / 2;
-        r = heads - f;
+        ph = 2 * heads - legs / 2;
+        r = heads - ph;
 
         System.out.printf("Если в клетке находятся фазаны и кролики. И известно, что у них\n"
-                + "35 голов и 94 ноги. То из них %d кроликов и %d фазанов.\n", r, f);
+                + "35 голов и 94 ноги. То из них %d кроликов и %d фазанов.\n", r, ph);
 
         //Test
         int expectedResultR = 12;
-        int expectedResultF = 23;
+        int expectedResultPh = 23;
         int actualResultR = r;
-        int actualResultF = f;
+        int actualResultF = ph;
 
-        if (expectedResultF == actualResultF && expectedResultR == actualResultR) {
+        if (expectedResultPh == actualResultF && expectedResultR == actualResultR) {
 
             System.out.println("Pass");
-        }
-        else {
+        } else {
             System.out.println("Fail");
         }
 
@@ -287,54 +348,69 @@ public class HW4 {
 
         if (!(timeInput == time1 && distanceInput == distance1)
                 && !(timeInput == time2 && distanceInput == distance2)
-                && !(timeInput == time3 && distanceInput == distance3))
-        {
+                && !(timeInput == time3 && distanceInput == distance3)) {
             System.out.println("Test data out of range");
         } else if ((timeInput == time1 && distanceInput == distance1 && expectedResult1 == actualResult1)
                 || (timeInput == time2 && distanceInput == distance2 && expectedResult2 == actualResult1)
-                || (timeInput == time3 && distanceInput == distance3 && expectedResult3 == actualResult1))
-        {
+                || (timeInput == time3 && distanceInput == distance3 && expectedResult3 == actualResult1)) {
             System.out.println("Pass");
-        }
-        else {
+        } else {
             System.out.println("Fail");
         }
 
         taskNumbers(17);
-//1 ко, 5-20 к, /2-4 ка, /5-9 к, 0 k
-//1-4 а 5-20 ов 21-24 а 25-30 ов
-        int apple = 40;
-        int student = 6;
-        String endingApple;
-        String endingStudent;
 
-        if ((apple % 10) == 1){
+        int apple = 21;
+        int student = 5;
 
-            endingApple = "ко";
-        }
-        else if ((5 <= apple) && (apple <= 20))  {
-
-            endingApple = "к";
-        }
-        else if ((2 <= (apple % 10)) && ((apple % 10)) <= 4) {
-
-            endingApple = "ка";
-        }
-        else if (((5 <= (apple % 10)) && ((apple % 10) <= 9)) ||  ((apple % 10) == 0)){
-
-            endingApple = "к";
-        }
-        else {
-
-            endingApple = "CHECK!!!";
-        }
-
-        System.out.printf("Если %d ябло%s поделить на %d учеников, то каждый ученик %n" +
+        System.out.printf("Если %d ябло%s поделить на %d ученик%s, то каждый ученик %n" +
                         "получит по %d ябло%s, и %d ябло%s останется учителю.%n",
-                apple, endingApple, student, apple / student, endingApple, apple % student, endingApple);
+                apple, endApple(apple), student, endStudent(student), apple / student, endApple(apple / student),
+                apple % student, endApple(apple % student));
 
+        taskNumbers(18);
 
+        tableFloatDouble(12, 22, 14, 44);
 
+        taskNumbers(19); // -32768 32767
+
+        int z = -327;
+
+        if (z < -32768 || z > 32767){
+
+            System.out.println("Number is out of \"short\" range");
+        }
+
+        if (z >= -32768 && z < 0){
+
+            z = -z;
+        }
+
+        if (z <= 32767 && z >= 0) {
+            if ((z / 10000) >= 0.1) {
+
+                System.out.println("It’s a five-digit number.");
+            } else if ((z * 10000 / 10000) >= 1000) {
+
+                System.out.println("It’s a four-digit number.");
+            } else if ((z * 10000 / 10000) >= 100) {
+
+                System.out.println("It’s a three-digit number.");
+            } else if ((z * 10000 / 10000) >= 10) {
+
+                System.out.println("It’s a two-digit number.");
+            } else if ((z * 10000 / 10000) >= 0) {
+
+                System.out.println("It’s a one-digit number.");
+            }
+        }
+
+        taskNumbers(20);
+
+        // Ответ получет в src/weather/Java11HttpClientExample.java
+
+//        Лондон (lat: 51.5085, lon: -0.1257)
+//        Париж (lat: 48.8534, lon: 2.3488)
     }
 
 }
