@@ -97,7 +97,15 @@ public class HW5 {
         return (int)Math.round(workHoursPerDay * costOfOneHour * averageDaysPerMonth);
     }
 
+    //7
 
+    public static double expectedTotal(double priceFor1, int amount){
+
+        if (priceFor1 <= 0 || amount <= 0){
+            return -1;
+        }
+        return (priceFor1 * amount);
+    }
 
 
     public static void main(String[] args) {
@@ -265,6 +273,46 @@ public class HW5 {
 
         printTestResult("6_1", verifyEquals(expectedResult, actualResult));
 
+        //TC_6_2 neg
+
+        workHoursPerDay = 8;
+        costOfOneHour = 11;
+
+        expectedResult = -1;
+        actualResult = salaryPerMonth(workHoursPerDay, costOfOneHour);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("6_2", verifyEquals(expectedResult, actualResult));
+
+
+        taskNumber(7);
+
+//TC_7_1 pos
+
+        double priceFor1 = 120.5;
+        int amount = 2;
+
+        expectedResult = (double)241;
+        actualResult = expectedTotal(priceFor1, amount);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("7_1", verifyEquals(expectedResult, actualResult));
+
+//TC_7_2 pos
+
+        priceFor1 = 0;
+        amount = 2;
+
+        expectedResult = (double)-1;
+        actualResult = expectedTotal(priceFor1, amount);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("7_2", verifyEquals(expectedResult, actualResult));
+
+    taskNumber(8);
 
 
 
