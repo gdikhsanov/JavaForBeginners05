@@ -21,6 +21,8 @@ public class Test {
         s1 = Double.toString(c);
         //s1 = String.valueOf(c);
         sum = (int)c + (int)d;
+
+        System.out.print("x".repeat(12));
     }
 
 }
