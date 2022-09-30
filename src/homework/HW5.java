@@ -142,6 +142,17 @@ public class HW5 {
 
     }
 
+
+    //9
+
+    public static void printPayRoll(String employee1, double salary1, String employee2, double salary2,
+                                    String employee3, double salary3, String employee4, double salary4){
+        System.out.println(payRoll(employee1, salary1));
+        System.out.println(payRoll(employee2, salary2));
+        System.out.println(payRoll(employee3, salary3));
+        System.out.println(payRoll(employee4, salary4));
+    }
+
     public static void main(String[] args) {
 
         taskNumber(1);
