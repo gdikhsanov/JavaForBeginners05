@@ -37,6 +37,15 @@ public class HW5 {
         }
     }
 
+    public static String verifyEquals(String  expectedResult, String actualResult){
+        if (expectedResult.equals(actualResult)){
+            return "Pass";
+        }
+        else{
+            return "Fail";
+        }
+    }
+
     //2
 
     public static String dayOfWeek(int dayNumber){
@@ -81,15 +90,16 @@ public class HW5 {
     public static double avrageTempCat (double t1, double t2, double t3, double t4, double t5){
 
         return (t1 <= 25 || t2 <= 25 || t3 <= 25 || t4 <= 25 || t5 <= 25 || 
-                t1 >= 45 || t2 >= 45 || t3 >= 45 || t4 >= 45 || t5 >= 45)?
-                -1: ((t1 + t2 + t3 + t4 + t5) / 5);
+                t1 >= 45 || t2 >= 45 || t3 >= 45 || t4 >= 45 || t5 >= 45)
+                ? -1
+                : ((t1 + t2 + t3 + t4 + t5) / 5);
     }
 
     //6
 
     public static int salaryPerMonth(int workHoursPerDay, double costOfOneHour){
 
-        double averageDaysPerMonth = 20.55;
+        double averageDaysPerMonth = Math.round(20.55);
 
         if (costOfOneHour < 12 || workHoursPerDay < 0 || workHoursPerDay > 24){
             return -1;
@@ -107,6 +117,30 @@ public class HW5 {
         return (priceFor1 * amount);
     }
 
+
+    //8
+
+    public static String payRoll(String employee, double salary){
+
+        int rub = (int)salary;
+        int kop = (int)Math.round((salary - rub) * 100);
+        String kop2digits;
+
+        if (employee == null || employee.equals("") || salary <= 0) {
+
+            return "";
+        }
+
+        if (kop >= 0 && kop <= 9){
+            kop2digits = "0" + kop;
+        }
+            else{
+            kop2digits = "" + kop;
+        }
+
+            return "" + employee + "\t\t\t" + rub + " руб " + kop2digits + " коп";
+
+    }
 
     public static void main(String[] args) {
 
@@ -261,19 +295,19 @@ public class HW5 {
 
         taskNumber(6);
 
-    //TC_6_1 pos
+//TC_6_1 pos
 
         int workHoursPerDay = 8;
         double costOfOneHour = 12.5;
 
-        expectedResult = 2055;
+        expectedResult = 2100;
         actualResult = salaryPerMonth(workHoursPerDay, costOfOneHour);
 
         verifyEquals(expectedResult, actualResult);
 
         printTestResult("6_1", verifyEquals(expectedResult, actualResult));
 
-        //TC_6_2 neg
+//TC_6_2 neg
 
         workHoursPerDay = 8;
         costOfOneHour = 11;
@@ -300,7 +334,7 @@ public class HW5 {
 
         printTestResult("7_1", verifyEquals(expectedResult, actualResult));
 
-//TC_7_2 pos
+//TC_7_2 neg
 
         priceFor1 = 0;
         amount = 2;
@@ -312,10 +346,59 @@ public class HW5 {
 
         printTestResult("7_2", verifyEquals(expectedResult, actualResult));
 
-    taskNumber(8);
+    taskNumber(8); //return "" + employee + "\t\t\t" + rub + " руб " + preKop + kop + " коп";
+
+//TC_8_1 pos
+
+        String employee = "Смирнова Мария Ивановна";
+        double salary = (double) 70000;
+
+        expectedResult = "Смирнова Мария Ивановна\t\t\t70000 руб 00 коп";
+        actualResult = payRoll(employee, salary);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("8_1", verifyEquals(expectedResult, actualResult));
+
+//TC_8_2 neg
+
+        employee = "";
+        salary = (double) 70000;
+
+        expectedResult = "";
+        actualResult = payRoll(employee, salary);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("8_2", verifyEquals(expectedResult, actualResult));
+
+//TC_8_3 neg
+
+        employee = "Смирнова Мария Ивановна";
+        salary = (double) 0;
+
+        expectedResult = "";
+        actualResult = payRoll(employee, salary);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("8_3", verifyEquals(expectedResult, actualResult));
+
+
+//TC_8_4 neg
+
+        employee = null;
+        salary = (double)70000;
+
+        expectedResult = "";
+        actualResult = payRoll(employee, salary);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("8_4", verifyEquals(expectedResult, actualResult));
 
 
 
 
-    }
+       }
 }
