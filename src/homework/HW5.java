@@ -145,13 +145,180 @@ public class HW5 {
 
     //9
 
-    public static void printPayRoll(String employee1, double salary1, String employee2, double salary2,
-                                    String employee3, double salary3, String employee4, double salary4){
-        System.out.println(payRoll(employee1, salary1));
-        System.out.println(payRoll(employee2, salary2));
-        System.out.println(payRoll(employee3, salary3));
-        System.out.println(payRoll(employee4, salary4));
+    public static void printPayRoll(String employee1, double salary1, char sex1,
+                                    String employee2, double salary2, char sex2) {
+
+        System.out.println("" + payRoll(employee1, salary1) + "\t" + sex1);
+        System.out.println("" + payRoll(employee2, salary2) + "\t" + sex2);
+        }
+
+    //10
+
+    public static String xValue(double x) {
+        if (x < 0) {
+
+            return "x is negative";
+        }
+        else if (x > 0) {
+
+            return "x is positive";
+        }
+
+        return "x is zero";
     }
+
+    //11
+
+    public static String toRubKop(double number){
+
+        int rub = (int)number;
+        int kop = (int)Math.round((number - rub) * 100);
+        String kop2digits;
+
+        if (number <= 0) {
+
+            return "Error";
+        }
+
+        if (kop >= 0 && kop <= 9){
+            kop2digits = "0" + kop;
+        }
+        else{
+            kop2digits = "" + kop;
+        }
+
+        return "" + rub + " руб " + kop2digits + " коп";
+    }
+
+    //12
+
+    public static String toKgG(double weight){
+
+        int kg = (int)weight;
+        int g = (int)Math.round((weight - kg) * 1000);
+//        String g2digits;
+
+        if (weight <= 0) {
+
+            return "Error";
+        }
+
+//        if (g >= 0 && g <= 9){
+//            g2digits = "00" + g;
+//        }
+//        else if (g >= 10 && g <= 99) {
+//            g2digits = "00" + g;
+//        } else{
+//            g2digits = "" + g;
+//        }
+
+        return "" + kg + " кг " /*+ g2digits*/ + g + " гр";
+    }
+
+    //13
+
+    public static void receipt(String item, String units, double price, double amount){
+
+        if (item == null || units == null || price <= 0 || amount <= 0) {
+            System.out.println("Error");
+        }
+        else {
+            System.out.println("\n" + item);
+            System.out.println("Цена за 1 " + units + "\t\t\t" + toRubKop(price));
+
+            if (units.equalsIgnoreCase("кг")){
+                System.out.println("Количество товара\t\t" + toKgG(amount));
+            }
+            else {
+                System.out.println("Количество товара\t\t" + (int)amount + " шт");
+            }
+            System.out.println("________________________________________________");
+            System.out.println("Сумма к оплате\t\t\t" + toRubKop(price * amount));
+        }
+
+    }
+
+    //14
+
+public static String happyNumber(int yOB) {
+
+    int x = Math.abs(yOB);
+    String text = "Cчастливое число - ";
+
+    if (x >=10000) {
+
+        return "Error";
+    }
+
+    if (x < 10) {
+
+        return text + x;
+    }
+    else if (x < 100 && x >= 10) {
+        if ((x % 10 + (x / 10)) < 10) {
+
+            return text + (x % 10 + (x / 10));
+        } else {
+            x = (x % 10 + (x / 10));
+        }
+        return text + (x % 10 + (x / 10));
+    }
+    else if (x < 1000 && x >= 100) {
+        if ((x % 10 + ((x / 10) % 10) + (x / 100)) < 10) {
+
+            return text + (x % 10 + ((x / 10) % 10) + (x / 100));
+        }
+        else {
+            x = (x % 10 + ((x / 10) % 10) + (x / 100));
+        }
+    }
+    else if (x < 10000 && x >= 1000) {
+        if ((x % 10 + ((x / 10) % 10) + ((x / 100) % 10) + (x / 1000)) < 10) {
+
+            return text + (x % 10 + ((x / 10) % 10) + ((x / 100) % 10) + (x / 1000));
+        }
+        else {
+            x = (x % 10 + ((x / 10) % 10) + ((x / 100) % 10) + (x / 1000));
+        }
+    }
+
+    if ((x % 10 + (x / 10)) < 10) {
+
+        return text + (x % 10 + (x / 10));
+    }
+    else {
+        x = (x % 10 + (x / 10));
+    }
+
+    return text + (x % 10 + (x / 10));
+}
+
+//        if (((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//                + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10)) < 10) {
+//
+//            return "" + ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//                    + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
+//        }
+//        else {
+//            x = ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//                     + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
+//        }
+//
+//        if (((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//                + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10)) < 10) {
+//
+//            return "" + ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//                    + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
+//        }
+//        else {
+//            x = ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//                    + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
+//        }
+//
+//    return "" + ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
+//            + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
+
+
 
     public static void main(String[] args) {
 
@@ -408,8 +575,113 @@ public class HW5 {
 
         printTestResult("8_4", verifyEquals(expectedResult, actualResult));
 
+    taskNumber(9);
+
+        printPayRoll("Вася", 45666, 'M', "Olya", 4556786.02, 'F');
+
+    taskNumber(10);
+
+//TC_10_1 pos
+
+        int x = 0;
+
+        expectedResult = "x is zero";
+        actualResult = xValue(x);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("10_1", verifyEquals(expectedResult, actualResult));
+
+//TC_10_2
+
+        x = 100;
+
+        expectedResult = "x is positive";
+        actualResult = xValue(x);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("10_2", verifyEquals(expectedResult, actualResult));
+
+    taskNumber(11);
+
+//TC_11_1
+
+        double number = 10.75;
+
+        expectedResult = "10 руб 75 коп";
+        actualResult = toRubKop(number);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("11_1", verifyEquals(expectedResult, actualResult));
+
+//TC_11_2 neg
+
+        number = 0;
+
+        expectedResult = "Error";
+        actualResult = toRubKop(number);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("11_2", verifyEquals(expectedResult, actualResult));
+
+    taskNumber(12);
+
+//TC_12_1
+
+        double weight = 10.075;
+
+        expectedResult = "10 кг 75 гр";
+        actualResult = toKgG(weight);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("12_1", verifyEquals(expectedResult, actualResult));
+
+//TC_12_2
+
+        weight = 0;
+
+        expectedResult = "Error";
+        actualResult = toKgG(weight);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("12_2", verifyEquals(expectedResult, actualResult));
+
+
+        taskNumber(13);
+
+        receipt("Яблоки", "кг", 53.13, 3.400);
+        receipt("Хлеб", "шт", 30.50, 5);
+
+        taskNumber(14);
+
+//TC_14_1
+
+        int yOB = 1999;
+
+        expectedResult = "Cчастливое число - 1";
+        actualResult = happyNumber(yOB);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("14_1", verifyEquals(expectedResult, actualResult));
+
+//TC_14_2
+
+        yOB = 21000;
+
+        expectedResult = "Error";
+        actualResult = happyNumber(yOB);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("14_2", verifyEquals(expectedResult, actualResult));
 
 
 
-       }
+    }
 }
