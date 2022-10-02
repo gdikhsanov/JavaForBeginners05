@@ -2,6 +2,9 @@ package homework;
 
 import PublicClasses.ConsoleColors;
 
+import javax.swing.border.MatteBorder;
+import java.util.Random;
+
 public class HW5 {
 
     public static void taskNumber(int task){
@@ -117,6 +120,14 @@ public class HW5 {
         return (priceFor1 * amount);
     }
 
+    public static double expectedTotal(double priceFor1, double amount){
+
+        if (priceFor1 <= 0 || amount <= 0){
+            return -1;
+        }
+        return (priceFor1 * amount);
+    }
+
 
     //8
 
@@ -207,7 +218,7 @@ public class HW5 {
 //            g2digits = "00" + g;
 //        }
 //        else if (g >= 10 && g <= 99) {
-//            g2digits = "00" + g;
+//            g2digits = "0" + g;
 //        } else{
 //            g2digits = "" + g;
 //        }
@@ -233,7 +244,8 @@ public class HW5 {
                 System.out.println("Количество товара\t\t" + (int)amount + " шт");
             }
             System.out.println("________________________________________________");
-            System.out.println("Сумма к оплате\t\t\t" + toRubKop(price * amount));
+            //System.out.println("Сумма к оплате\t\t\t" + toRubKop(price * amount));
+            System.out.println(payRoll("Сумма к оплате\t\t\t", expectedTotal(price, amount)));
         }
 
     }
@@ -250,29 +262,29 @@ public static String happyNumber(int yOB) {
         return "Error";
     }
 
-    if (x < 10) {
-
-        return text + x;
-    }
-    else if (x < 100 && x >= 10) {
-        if ((x % 10 + (x / 10)) < 10) {
-
-            return text + (x % 10 + (x / 10));
-        } else {
-            x = (x % 10 + (x / 10));
-        }
-        return text + (x % 10 + (x / 10));
-    }
-    else if (x < 1000 && x >= 100) {
-        if ((x % 10 + ((x / 10) % 10) + (x / 100)) < 10) {
-
-            return text + (x % 10 + ((x / 10) % 10) + (x / 100));
-        }
-        else {
-            x = (x % 10 + ((x / 10) % 10) + (x / 100));
-        }
-    }
-    else if (x < 10000 && x >= 1000) {
+//    if (x < 10) {
+//
+//        return text + x;
+//    }
+//    else if (x < 100 && x >= 10) {
+//        if ((x % 10 + (x / 10)) < 10) {
+//
+//            return text + (x % 10 + (x / 10));
+//        } else {
+//            x = (x % 10 + (x / 10));
+//        }
+//        return text + (x % 10 + (x / 10));
+//    }
+//    else if (x < 1000 && x >= 100) {
+//        if ((x % 10 + ((x / 10) % 10) + (x / 100)) < 10) {
+//
+//            return text + (x % 10 + ((x / 10) % 10) + (x / 100));
+//        }
+//        else {
+//            x = (x % 10 + ((x / 10) % 10) + (x / 100));
+//        }
+//    }
+//    else if (x < 10000 && x >= 1000) {
         if ((x % 10 + ((x / 10) % 10) + ((x / 100) % 10) + (x / 1000)) < 10) {
 
             return text + (x % 10 + ((x / 10) % 10) + ((x / 100) % 10) + (x / 1000));
@@ -280,7 +292,7 @@ public static String happyNumber(int yOB) {
         else {
             x = (x % 10 + ((x / 10) % 10) + ((x / 100) % 10) + (x / 1000));
         }
-    }
+
 
     if ((x % 10 + (x / 10)) < 10) {
 
@@ -293,30 +305,163 @@ public static String happyNumber(int yOB) {
     return text + (x % 10 + (x / 10));
 }
 
-//        if (((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//                + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10)) < 10) {
+    //15 a
+
+    public static String medianOfThreeA(int x, int y, int z){
+
+        int average = (int)Math.round((x + y + z) / 3.0);
+        int median;
+
+        if ((x > y && x < z) || (x < y && x > z) || x == y || x == z){
+            median = x;
+        }
+        else if ((y < z && y > x) || (y > z && y < x) || y == z) {
+            median = y;
+        }
+        else {
+            median = z;
+        }
+
+        if (Math.abs(average - median) > 2) {
+            return "Среднее значение " + average + " отличается от медианы " + median + " на "
+                    + Math.abs(average - median);
+        }
+        else {
+            return "Среднее значение = " + average + ", медиана = " + median;
+        }
+    }
+
+    //15 b
+
+    public static String medianOfThreeB(int x, int y, int z){
+
+        int average = (int)Math.round((x + y + z) / 3.0);
+        int median = x + y + z - Math.max(Math.max(x, y), z) - Math.min(Math.min(x, y), z);
+
+        if (Math.abs(average - median) > 2) {
+            return "Среднее значение " + average + " отличается от медианы " + median + " на "
+                    + Math.abs(average - median);
+        }
+        else {
+            return "Среднее значение = " + average + ", медиана = " + median;
+        }
+    }
+
+    //16
+
+    public static String totalHigh(double total) {
+
+        return "" + (int)Math.floor(total) + " руб 00 коп";
+    }
+
+    //17
+
+    public static int equation(int a, int b, int c) {
+        if (((a * b +c) * Math.pow(a, b)) >= 0){
+
+            return (int) (Math.ceil(Math.sqrt((a * b + c) * Math.pow(a, b)) / Math.PI));
+        }
+
+            return -1;
+    }
+
+    //18
+///1
+    public static void task18(){
+
+        int x = 15;
+        int y = 10;
+
+        if(y > 0) {
+            x = 1;
+        }
+//2
+        double score = 10;
+
+        if (score > 80 && score < 90) {
+            score += 5;
+        }
+
+//3
+       int i = 30;
+       int v = 70;
+
+        boolean item = (i >= 10) || (v < 50);
+//4
+        boolean odd;
+        int x1 = 12;
+
+        if (x1 % 2 != 0 && x1 >= 0) {
+            odd = true;
+        }
+        else {
+            odd = false;
+        }
+        System.out.println(odd);
+
+//5
+        int x2 = 12;
+        int y2 = -12;
+
+        if (x >0 && y > 0) {
+            System.out.println(true);
+        }
+        else {
+            System.out.println(false);
+        }
+//6
+        int x3 = 12;
+        int y3 = -2;
+
+        //System.out.println((Integer.signum(x3) == Integer.signum(y3))? true: false);
+        System.out.println(Integer.signum(x3) == Integer.signum(y3));
+    }
+
+    //19
+
+    public static double powerRandom(){
+
+        double base = Math.random();
+        int exponent = (int)(Math.random() * 11);
+
+        double resultMathRand = Math.pow(base, exponent);
+
+
+//        Random r = new Random();
 //
-//            return "" + ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//                    + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
-//        }
-//        else {
-//            x = ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//                     + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
-//        }
+//        double resultRandomNextInt = Math.pow(Math.random(), (r.nextInt(10)));
 //
-//        if (((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//                + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10)) < 10) {
-//
-//            return "" + ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//                    + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
-//        }
-//        else {
-//            x = ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//                    + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
-//        }
-//
-//    return "" + ((int)(((x / 10.0) - (int)(x / 10)) * 10) + (int)(((x / 100.0) - (int)(x / 100)) * 10)
-//            + (int)(((x / 1000.0) - (int)(x / 1000)) * 10) + (int)(((x / 10000.0) - (int)(x / 10000)) * 10));
+//        System.out.println("Math" + resultMathRand + ",  Round" + resultRandomNextInt);
+        System.out.println("Число " + base + " в степени " + exponent + " = " + resultMathRand);
+
+        return resultMathRand;
+    }
+
+    //20
+
+    public static int random1To99(){
+
+        return (int)((Math.random() * 99) + 1);
+    }
+
+    public static int randomMinus1ToMinus99(){
+
+        return (int)(-((Math.random() * 99) + 1));
+    }
+
+
+    //21
+
+    public static boolean leapYear(int year){
+
+        if ((year % 4 == 0 && year % 100 != 0) && year % 400 != 0) {
+
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 
@@ -607,9 +752,9 @@ public static String happyNumber(int yOB) {
 
 //TC_11_1
 
-        double number = 10.75;
+        double number = 2.05;
 
-        expectedResult = "10 руб 75 коп";
+        expectedResult = "2 руб 05 коп";
         actualResult = toRubKop(number);
 
         verifyEquals(expectedResult, actualResult);
@@ -654,22 +799,22 @@ public static String happyNumber(int yOB) {
 
         taskNumber(13);
 
-        receipt("Яблоки", "кг", 53.13, 3.400);
+        receipt("Яблоки", "кг", 53.50, 3.400);
         receipt("Хлеб", "шт", 30.50, 5);
 
         taskNumber(14);
 
 //TC_14_1
 
-        int yOB = 1999;
+        int yOB = 1982;
 
-        expectedResult = "Cчастливое число - 1";
+        expectedResult = "Cчастливое число - 2";
         actualResult = happyNumber(yOB);
 
         verifyEquals(expectedResult, actualResult);
 
         printTestResult("14_1", verifyEquals(expectedResult, actualResult));
-
+        System.out.println(happyNumber(yOB));
 //TC_14_2
 
         yOB = 21000;
@@ -680,6 +825,202 @@ public static String happyNumber(int yOB) {
         verifyEquals(expectedResult, actualResult);
 
         printTestResult("14_2", verifyEquals(expectedResult, actualResult));
+
+        taskNumber(15);
+
+//TC_15_a_1
+
+        int a = 100;
+        int b = 100;
+        int c = 1000;
+
+        expectedResult = "Среднее значение 400 отличается от медианы 100 на 300";
+        actualResult = medianOfThreeA(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_a_1", verifyEquals(expectedResult, actualResult));
+
+//TC_15_a_2
+
+        a = 100;
+        b = 300;
+        c = -1000;
+
+        expectedResult = "Среднее значение -200 отличается от медианы 100 на 300";
+        actualResult = medianOfThreeA(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_a_2", verifyEquals(expectedResult, actualResult));
+
+//TC_15_a_3
+
+        a = 0;
+        b = 0;
+        c = 0;
+
+        expectedResult = "Среднее значение = 0, медиана = 0";
+        actualResult = medianOfThreeA(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_a_3", verifyEquals(expectedResult, actualResult));
+
+//TC_15_a_4 neg
+
+        a = 0;
+        b = 1;
+        c = 0;
+
+        expectedResult = "Среднее значение = 0, медиана = 0";
+        actualResult = medianOfThreeA(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_a_4", verifyEquals(expectedResult, actualResult));
+
+//TC_15_b_1
+
+        a = 100;
+        b = 100;
+        c = 1000;
+
+        expectedResult = "Среднее значение 400 отличается от медианы 100 на 300";
+        actualResult = medianOfThreeB(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_b_1", verifyEquals(expectedResult, actualResult));
+
+//TC_15_b_2
+
+        a = 100;
+        b = 300;
+        c = -1000;
+
+        expectedResult = "Среднее значение -200 отличается от медианы 100 на 300";
+        actualResult = medianOfThreeB(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_b_2", verifyEquals(expectedResult, actualResult));
+
+//TC_15_b_3
+
+        a = 0;
+        b = 0;
+        c = 0;
+
+        expectedResult = "Среднее значение = 0, медиана = 0";
+        actualResult = medianOfThreeB(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_b_3", verifyEquals(expectedResult, actualResult));
+
+//TC_15_b_4 neg
+
+        a = 0;
+        b = 1;
+        c = 0;
+
+        expectedResult = "Среднее значение = 0, медиана = 0";
+        actualResult = medianOfThreeB(a, b, c);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("15_b_4", verifyEquals(expectedResult, actualResult));
+
+        taskNumber(16);
+
+//TC_16_1
+
+        double total = 123.125;
+
+
+        expectedResult = "123 руб 00 коп";
+        actualResult = totalHigh(total);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("16_1", verifyEquals(expectedResult, actualResult));
+
+        taskNumber(17);
+
+//TC_17_1
+
+        int q = 3;
+        int w = 4;
+        int e = 20;
+
+
+        expectedResult = 17;
+        actualResult = equation(q, w, e);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("17_1", verifyEquals(expectedResult, actualResult));
+        System.out.println( equation(q, w, e));
+
+        taskNumber(18);
+
+        taskNumber(19);
+
+//TC_19_1
+
+        boolean actualResultBoolean;
+        double pow = powerRandom();
+
+        if (pow >= 0 && pow < 1) {
+            actualResultBoolean = true;
+        }
+        else {
+            actualResultBoolean = false;
+        }
+        expectedResult = true;
+        actualResult = actualResultBoolean;
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("19_1", verifyEquals(expectedResult, actualResult));
+
+        taskNumber(20);
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(random1To99() + " *** " + randomMinus1ToMinus99());
+        }
+
+
+
+
+        taskNumber(21);
+
+    //TC_21_1
+
+        int year = 1984;
+
+
+
+        expectedResult = true;
+        actualResult = leapYear(year);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("21_1", verifyEquals(expectedResult, actualResult));
+
+//TC_21_1
+
+        year = 1982;
+
+
+
+        expectedResult = false;
+        actualResult = leapYear(year);
+
+        verifyEquals(expectedResult, actualResult);
+
+        printTestResult("21_2", verifyEquals(expectedResult, actualResult));
 
 
 
