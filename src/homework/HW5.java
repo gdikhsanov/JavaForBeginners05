@@ -245,7 +245,7 @@ public class HW5 {
             }
             System.out.println("________________________________________________");
             //System.out.println("Сумма к оплате\t\t\t" + toRubKop(price * amount));
-            System.out.println(payRoll("Сумма к оплате\t\t\t", expectedTotal(price, amount)));
+            System.out.println(payRoll("Сумма к оплате", expectedTotal(price, amount)));
         }
 
     }
