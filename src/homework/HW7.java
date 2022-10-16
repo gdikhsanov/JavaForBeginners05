@@ -86,13 +86,12 @@ public class HW7 {
         return 0;
     }
 
-    public static int returnDate(int date) {
+    public static String returnDate(int date) {
         if (date < 10) {
-            String number = String.format("%03d", date);
 
-            return Integer.valueOf(number); //добавляем ноль для 1-9
+            return "0" + String.valueOf(date); //добавляем ноль для 1-9
         } else {
-            return date;
+            return String.valueOf(date);
         }
     }
 
@@ -132,14 +131,13 @@ public class HW7 {
         return numDays;
     }
 
-    public static void printEightDaysFromDate(String day, int month, int date) {
+    public static void printEightDaysFromDate(String day, int month, int date, int year) {
 
-        int year = Year.now().getValue();
-        int currentYear = Year.now().getValue();
+        int currentYear = year; //использовал для метода без агумета year. Для текущего года.
 
         if (returnDayOfTheWeek(day) == 0 ||
                 returnMonth(month).equals("Error") ||
-                month <= 0 ||
+                month <= 0 || // лишнее т.к. уже проверяется в returnMonth
                 date <= 0 ||
                 date > (daysInMonth(month, year))) {
 
@@ -149,7 +147,7 @@ public class HW7 {
             int currentDay = returnDayOfTheWeek(day);
             int currentMonth = month;
             int currentDate = date;
-//day
+// print day
             for (int i = 0; i <= 7; i++) {
                 if (currentDay != 7) {
                     System.out.print(returnDayOfTheWeek(currentDay) + ", ");
@@ -158,7 +156,7 @@ public class HW7 {
                     System.out.print(returnDayOfTheWeek(currentDay) + ", ");
                     currentDay = 1;
                 }
-//month + date
+// prinnt month + date
                 if (currentDate <= daysInMonth(currentMonth, currentYear)) {
                     System.out.println(returnMonth(currentMonth) + " " + returnDate(currentDate));
 //                    System.out.println(" " + currentYear); //проверка года - закоментить
@@ -177,26 +175,6 @@ public class HW7 {
                 }
             }
         }
-//        РАЗОБРАТЬСЯ   (выше было int l = 8:)
-//        else {
-//            for (int i = returnDayOfTheWeek(day); i <= 7 && l > 0; i++, date++, l--) {
-//                if (i != 7) {
-//                    if ((month <= 7 && month % 2 != 0 && returnDate(date) >= 32)
-//                            || ((month == 9 || month == 11) && returnDate(date) >= 31)
-//                            || ((month == 4 || month == 6) && returnDate(date) >= 31)
-//                            || (month >= 8 && month <= 12 && month % 2 == 0 && returnDate(date) >= 32)
-//                            || (month == 2 && returnDate(date) >= 29)) {
-//                        date = 1;
-//                        month += 1;
-//                    }
-//
-//                    System.out.println(returnDayOfTheWeek(i) + ", " + returnMonth(month) + " " + returnDate(date));
-//                } else {
-//                    System.out.println(returnDayOfTheWeek(i) + ", " + returnMonth(month) + " " + returnDate(date));
-//                    i = 0;
-//                }
-//            }
-//        }
     }
 
     //2
@@ -224,15 +202,21 @@ public class HW7 {
     //21
     public static void printEven(int l) {
 
-        int[] numbers = new int[l];
+        int[] numbers = new int[Math.abs(l)];
 
+        for (int i = 0; i < Math.abs(l); i++) {
 
-        for (int i = 0; i < l; i++) {
-            numbers[i] = (int) (Math.random() * 7);
+            int number;
+
+            do {
+                number = (int) Math.abs(Math.random() * 7);
+                if (number % 2 == 0) {
+                    numbers[i] = number;
+                }
+            }
+            while (number % 2 == 0);
         }
-
         System.out.print(Arrays.toString(numbers));
-
     }
 
     //22
@@ -269,7 +253,7 @@ public class HW7 {
 
         taskNumber(1);
 
-        printEightDaysFromDate("Fri", 12, 28);
+        // выполняю в последней задаче
 
         taskNumber(2);
 
@@ -430,14 +414,14 @@ public class HW7 {
 
         taskNumber(23);
 
-        int[] odd = new int[50];
+        int[] odd = new int[50]; // вычислить длинну массива первым for со счетчиком
         int o = 0;
 
-        for (int i = -1000; i < -900; i++) {
-            if (i % 2 != 0) {
-                odd[o] = i;
-                o += 1;
-            }
+        for (int i = -1000; i < -900; ) { //ТАК МОЖНО
+
+            odd[o] = i;
+            i += 2;
+            o++;
         }
         System.out.println(Arrays.toString(odd));
 
@@ -487,7 +471,7 @@ public class HW7 {
         System.out.println(Arrays.toString(oddNumbers));
 
         taskNumber(27);
-                /*
+                /* Временное помешательство - неоднородные массивы
                 {{"Мурзик", 2, "Grey"}, {"Черныш", 3, "Black"}, {"Мурка", 4, "Grey"},
                 {"Васька", 1, "Brown"}, {"Рыжик", 5, "Red"}, {"Дымка", 6, "Grey"}, {"Патрик", 9, "Red"},
                 {"Зорро", 10, "Grey"}};
@@ -527,6 +511,6 @@ public class HW7 {
 
         taskNumber(30);
 
-
+        printEightDaysFromDate("Fri", 12, 27, 2020);
     }
 }
